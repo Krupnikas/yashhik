@@ -1,2 +1,2 @@
-# yashhik
-Telegram Bot for YouTube and Yandex.Station (Yandex.Module)
+# Ящик - Телеграм бот для запуска видео на Яндекс.Станции
+

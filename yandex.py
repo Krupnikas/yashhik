@@ -19,14 +19,14 @@ def sendToScreen(video_url):
     Session_id = s.cookies["Session_id"]
     
     # Getting x-csrf-token
-    responce = s.get("https://yandex.ru/video/preview")
+    responce = s.get("https://yandex.ru/video/preview?&text=Ящик")
     token_pos = responce.text.find("xcsrftoken")
     postfix = responce.text[token_pos + 13 : token_pos + 100]
     token = postfix.split('"')[0]
 
     # Detting devices info TODO: device selection here
     devices_online_stats = s.get("https://quasar.yandex.ru/devices_online_stats").text
-    devices = json.loads(devices)["items"]
+    devices = json.loads(devices_online_stats)["items"]
 
     # Preparing request
     headers = {

@@ -4,6 +4,7 @@ from pytube import YouTube
 from yandex import sendToScreen
 import config
 
+
 def youtubeToVideoUrl(url):
     yt = YouTube(url).streams.first()
     return yt.url
@@ -29,6 +30,8 @@ def message_recieved(bot, update):
     video_url = getVideoUrl(url)
     result = sendToScreen(video_url)
 
+    print(result)
+
     bot.send_message(chat_id=update.message.chat_id, text=result)
 
 
@@ -36,6 +39,8 @@ updater = Updater(token=config.telegram_bot_token, request_kwargs=config.proxy)
 
 message_handler = MessageHandler(Filters.all, message_recieved)
 updater.dispatcher.add_handler(message_handler)
+
+print("Start polling...")
 
 updater.start_polling()
 

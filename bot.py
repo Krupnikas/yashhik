@@ -7,6 +7,9 @@ import config
 def getVideoUrl(url):
     if "youtube" in url:
         url = url.split("&")[0]  # Removing arguments
+    if "https://youtu.be" in url:
+        url = "https://www.youtube.com/watch?v=" + url.split("/")[-1]
+
     # Page parsing and getting video_url here
     return url
 

@@ -1,24 +1,18 @@
 from telegram.ext import Updater, MessageHandler, Filters
-from pytube import YouTube
 
 from yandex import sendToScreen
 import config
 
 
-def youtubeToVideoUrl(url):
-    yt = YouTube(url).streams.first()
-    return yt.url
-
-
 def getVideoUrl(url):
     if "youtube" in url:
-        return youtubeToVideoUrl(url)
-    # Other services can be here
+        url = url.split("&")[0]  # Removing arguments
+    # Page parsing and getting video_url here
     return url
 
 
 def extractUrl(message):
-    return message.text # TODO: getting url by entities info
+    return message.text  # TODO: getting url by entities info
 
 
 def message_recieved(bot, update):

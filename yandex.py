@@ -3,6 +3,7 @@ import json
 
 import config
 
+
 def sendToScreen(video_url):
 
     # Auth and getting Session_id
@@ -35,13 +36,12 @@ def sendToScreen(video_url):
 
     data = {
         "msg": {
-            "provider_item_id": video_url,
-            "device": devices[0]["id"]
-            }
-        }
+            "provider_item_id": video_url
+        },
+        "device": devices[0]["id"]
+    }
 
     # Sending command with video to device
-    res = s.post("https://yandex.ru/video/station", data=data, headers=headers)
+    res = s.post("https://yandex.ru/video/station", data=json.dumps(data), headers=headers)
 
     return res.text
-

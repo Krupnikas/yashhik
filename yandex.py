@@ -38,7 +38,7 @@ def sendToScreen(video_url):
         "device": devices[0]["id"]
     }
 
-    if "youtube" in video_url:
+    if "https://www.youtube" in video_url:
         data["msg"]["player_id"] = "youtube"
 
     # Sending command with video to device

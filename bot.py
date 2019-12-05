@@ -1,6 +1,9 @@
 from telegram.ext import Updater, MessageHandler, Filters
 from pytube import YouTube
 
+import logging
+logging.getLogger().setLevel(logging.DEBUG)
+
 from yandex import sendToScreen
 import config
 
@@ -18,7 +21,7 @@ def getVideoUrl(url):
 
     last_url = url
 
-    if "youtube" in url:
+    if "www.youtube" in url:
         url = url.split("&")[0]  # Removing arguments
 
     if "https://youtu.be" in url:
@@ -33,7 +36,7 @@ def extractUrl(message):
 
 
 def message_recieved(bot, update):
-    
+
     user_id = update.message.chat_id
     # TODO: get yandex configs based on user_id
 
@@ -45,7 +48,7 @@ def message_recieved(bot, update):
 
     print(result)
 
-    bot.send_message(chat_id=update.message.chat_id, text=result)
+    bot.send_message(chat_id=update.message.chat_id, text=result + video_url)
 
 
 updater = Updater(token=config.telegram_bot_token, request_kwargs=config.proxy)

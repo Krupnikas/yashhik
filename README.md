@@ -35,4 +35,4 @@ python3 bot.py
 ## Развитие
 Если вы поймете, как избежать ошибок в воспроизведении, хотите доработать бота для работы через Oauth, добавить поддержку видео-сообщений телеграмма или других сервисов - Welcome! Было бы здорово пересылать сообщения от ботов - поисковиков видео в Ящик. 
 
-[<img width="300" src="https://github.com/Krupnikas/yashhik/raw/master/donate.png"/>](https://money.yandex.ru/to/41001793099478/150)
+[<img width="200" src="https://github.com/Krupnikas/yashhik/raw/master/donate.png"/>](https://money.yandex.ru/to/41001793099478/150)

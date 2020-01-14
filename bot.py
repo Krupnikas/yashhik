@@ -2,7 +2,7 @@ from telegram.ext import Updater, MessageHandler, Filters
 from pytube import YouTube
 
 import logging
-logging.getLogger().setLevel(logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, filename='logs.txt')
 
 from yandex import sendToScreen
 import config
@@ -21,7 +21,7 @@ def getVideoUrl(url):
 
     last_url = url
 
-    if "www.youtube" in url:
+    if "https://www.youtube" in url:
         url = url.split("&")[0]  # Removing arguments
 
     if "https://youtu.be" in url:

@@ -9,6 +9,7 @@ import config
 
 
 last_url = ""
+authorised_users = []
 
 def getVideoUrl(url):
 
@@ -41,6 +42,17 @@ def message_recieved(bot, update):
     # TODO: get yandex configs based on user_id
 
     print(update.message)
+
+    if update.message.text == config.bot_password:
+        authorised_users.append(user_id)
+        bot.send_message(chat_id=update.message.chat_id, text="Успешная авторизация!")
+        print(f"Authorised: {user_id}")
+        return
+
+    if not user_id in authorised_users:
+        bot.send_message(chat_id=update.message.chat_id, text="Это бот Сергея. Пожалуйста, сделайте своего бота.")
+        print("Unauthorised request blocked!")
+        return
 
     url = extractUrl(update.message)
     video_url = getVideoUrl(url)
